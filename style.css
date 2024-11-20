@@ -773,3 +773,62 @@ nav {
   width: clamp(60px, 15vw, 100px);
   height: clamp(60px, 15vw, 100px);
 }
+/* Mitigasi Container */
+.mitigasi-container {
+  display: flex;
+  flex-direction: column; /* Change to column for smaller screens */
+  align-items: center; /* Center align items */
+  gap: 2rem;
+  padding: var(--container-padding);
+}
+
+/* Timeline Item */
+.timeline-item {
+  flex: 1 1 auto; /* Allow items to grow and shrink */
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%; /* Full width on smaller screens */
+  max-width: 600px; /* Limit max width for larger screens */
+}
+
+/* Card Container */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Responsive grid */
+  gap: 1.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .mitigasi-container {
+    flex-direction: column; /* Stack items vertically */
+  }
+
+  .timeline-item {
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .card-container {
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(200px, 1fr)
+    ); /* Adjust card size */
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline-item {
+    padding: 1rem; /* Reduce padding for smaller screens */
+  }
+
+  .card-container {
+    grid-template-columns: 1fr; /* Single column layout */
+  }
+}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mitigasi Gempa - Epel</title>
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css"
+    />
+    <!-- AOS CSS untuk animasi scroll -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+      <div class="earthquake-loading">
+        <div class="epicenter"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+        <div class="wave"></div>
+      </div>
+      <p>Sebentar Epel Memuat Data Gempa...</p>
+    </div>
+
+    <!-- Header -->
+    <header class="glass-morphism">
+      <nav>
+        <div class="logo">
+          <!-- <img src="/api/placeholder/50/50" alt="Logo" /> -->
+          <span>EVELLY - SIGAB</span>
+        </div>
+        <div class="nav-links">
+          <a href="#beranda" class="active">Beranda</a>
+          <a href="#mitigasi">Mitigasi</a>
+          <a href="#peta">Peta</a>
+          <a href="#data-gempa">Data Gempa</a>
+          <a href="#kontak" class="btn-kontak">Kontak Darurat</a>
+        </div>
+        <div class="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div class="hero-content" data-aos="fade-up">
+          <h1>Sistem Informasi Gempa dan Mitigasi Bencana</h1>
+          <p>Informasi real-time dan panduan lengkap menghadapi gempa bumi</p>
+          <div class="cta-buttons">
+            <a href="#peta" class="btn-primary">Lihat Peta</a>
+            <a href="#mitigasi" class="btn-secondary">Pelajari Mitigasi</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Gempa Terkini -->
+      <section id="data-gempa" class="glass-morphism">
+        <h2 data-aos="fade-right">Gempa Terkini</h2>
+        <div class="gempa-container" id="gempa-terkini">
+          <!-- Data gempa akan diisi oleh JavaScript -->
+        </div>
+      </section>
+
+      <!-- Mitigasi -->
+      <section id="mitigasi">
+        <h2 data-aos="fade-right">Panduan Mitigasi</h2>
+        <div class="mitigasi-container">
+          <div class="timeline-item" data-aos="fade-right">
+            <div class="timeline-content">
+              <h3>Sebelum Gempa Terjadi</h3>
+              <div class="card-container">
+                <!-- Card content for "Saat Gempa Terjadi" -->
+              </div>
+            </div>
+          </div>
+          <div class="timeline-item" data-aos="fade-left">
+            <div class="timeline-content">
+              <h3>Pasca Gempa</h3>
+              <div class="card-container">
+                <!-- Card content for "Pasca Gempa" -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Peta -->
+      <section id="peta" class="glass-morphism">
+        <h2 data-aos="fade-right">Peta Sebaran Gempa</h2>
+        <div id="map"></div>
+      </section>
+
+      <!-- Formulir Kontak Darurat -->
+      <section id="kontak" class="glass-morphism">
+        <h2 data-aos="fade-right">Kontak Darurat</h2>
+        <div class="form-container">
+          <form id="emergency-form">
+            <div class="form-group">
+              <label for="nama">Nama Lengkap</label>
+              <input type="text" id="nama" required />
+            </div>
+            <div class="form-group">
+              <label for="lokasi">Lokasi</label>
+              <input type="text" id="lokasi" required />
+            </div>
+            <div class="form-group">
+              <label for="jenis-bantuan">Jenis Bantuan</label>
+              <select id="jenis-bantuan" required>
+                <option value="">Pilih Jenis Bantuan</option>
+                <option value="medis">Medis</option>
+                <option value="evakuasi">Evakuasi</option>
+                <option value="logistik">Logistik</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="deskripsi">Deskripsi Keadaan</label>
+              <textarea id="deskripsi" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn-emergency">
+              Kirim Bantuan Darurat
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="glass-morphism">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Kontak Darurat</h3>
+          <p>☎️ 115 - Pusat Penanganan Krisis</p>
+          <p>🚑 119 - Ambulans</p>
+          <p>🚒 113 - Pemadam Kebakaran</p>
+        </div>
+        <div class="footer-section">
+          <h3>Sumber Informasi:</h3>
+          <a href="https://bmkg.go.id" style="color: white"
+            >https://bmkg.go.id</a
+          >
+          <a href="https://bnpb.go.id" style="color: white"
+            >https://bnpb.go.id</a
+          >
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024 EVELLKZ DEVELOPER | SIGAB - Sistem Informasi Gempa dan
+          Mitigasi Bencana
+        </p>
+      </div>
+    </footer>
+
+    <!-- Floating Emergency Button -->
+    <div class="floating-emergency">
+      <a href="tel:115" class="emergency-button">
+        <span class="pulse"></span>
+        ☎️ 115
+      </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+<!-- by epel -->

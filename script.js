@@ -42,13 +42,11 @@ particlesJS("particles-js", {
   retina_detect: true,
 });
 
-// Initialize AOS
 AOS.init({
   duration: 1000,
   once: true,
 });
 
-// BMKG API Integration
 const fetchGempaTerkini = async () => {
   try {
     const response = await fetch(
@@ -99,7 +97,7 @@ const updateGempaCards = (gempaData) => {
   if (!gempaData) return;
 
   const container = document.getElementById("gempa-terkini");
-  container.innerHTML = ""; // Clear existing content
+  container.innerHTML = "";
 
   const card = document.createElement("div");
   card.className = "gempa-card";
@@ -116,7 +114,6 @@ const updateGempaCards = (gempaData) => {
   container.appendChild(card);
 };
 
-// Emergency Form Handler
 document.getElementById("emergency-form").addEventListener("submit", (e) => {
   e.preventDefault();
   const formData = {
@@ -126,42 +123,34 @@ document.getElementById("emergency-form").addEventListener("submit", (e) => {
     deskripsi: document.getElementById("deskripsi").value,
   };
 
-  // Show alert
   const alert = document.createElement("div");
   alert.className = "alert";
   alert.textContent =
     "Permintaan bantuan telah dikirim! Tim akan segera menghubungi Anda.";
   document.body.appendChild(alert);
 
-  // Remove alert after 5 seconds
   setTimeout(() => {
     alert.remove();
   }, 5000);
 
-  // Reset form
   e.target.reset();
 });
 
-// Mobile Menu Toggle
 document.querySelector(".menu-toggle").addEventListener("click", () => {
   document.querySelector(".nav-links").classList.toggle("active");
 });
 
-// Loading Screen
 window.addEventListener("load", async () => {
-  // Fetch initial earthquake data
   const gempaData = await fetchGempaTerkini();
   updateMap(gempaData);
   updateGempaCards(gempaData);
 
-  // Hide loading screen with fade effect
   const loadingScreen = document.querySelector(".loading-screen");
   loadingScreen.style.opacity = "0";
   setTimeout(() => {
     loadingScreen.style.display = "none";
   }, 500);
 
-  // Set up periodic data refresh (every 5 minutes)
   setInterval(async () => {
     const newData = await fetchGempaTerkini();
     updateMap(newData);
@@ -271,9 +260,8 @@ const renderMitigasiCards = () => {
   const cardContainer = document.querySelector(".mitigasi-container");
 
   if (cardContainer) {
-    cardContainer.innerHTML = ""; // Clear existing content
+    cardContainer.innerHTML = "";
 
-    // Sebelum Bencana
     const sebelumSection = document.createElement("div");
     sebelumSection.className = "timeline-item";
     sebelumSection.setAttribute("data-aos", "fade-right");
@@ -301,8 +289,6 @@ const renderMitigasiCards = () => {
         </div>
       </div>
     `;
-
-    // Saat Bencana
     const saatSection = document.createElement("div");
     saatSection.className = "timeline-item";
     saatSection.setAttribute("data-aos", "fade-up");
@@ -330,8 +316,6 @@ const renderMitigasiCards = () => {
         </div>
       </div>
     `;
-
-    // Pasca Bencana
     const pascaSection = document.createElement("div");
     pascaSection.className = "timeline-item";
     pascaSection.setAttribute("data-aos", "fade-left");
@@ -366,7 +350,6 @@ const renderMitigasiCards = () => {
   }
 };
 
-// Add this to your window load event or DOMContentLoaded event
 document.addEventListener("DOMContentLoaded", renderMitigasiCards);
 
 document.querySelector(".menu-toggle").addEventListener("click", function () {
